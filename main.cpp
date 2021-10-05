@@ -1,6 +1,5 @@
 #include<iostream>
 #include<cstdlib>
-#include<cmath>
 #include<fstream>
 #include<string>
 
@@ -8,12 +7,6 @@ using namespace std;
 
 ifstream inf("matrix.txt");
 ofstream outf("matrix.txt", ios::app);
-
-// Вычисляем длину массива
-int lenghtArr(int** arr)
-{
-    return sizeof(arr) - 1;
-}
 
 // Проверяем на наличие ошибок
 void checkFileError()
@@ -26,9 +19,8 @@ void checkFileError()
 }
 
 // Выводим массив
-void outArr(int** arr)
+void outArr(int** arr, int N)
 {
-    const int N = lenghtArr(arr);
     for (int i = 0; i < N; i++)
     {
         for (int j = 0; j < N; j++)
@@ -38,9 +30,8 @@ void outArr(int** arr)
 }
 
 // Заполняем массив
-void fillArr(int **arr)
+void fillArr(int** arr, int N)
 {
-    const int N = lenghtArr(arr);
     for (int i = 0; i < N; i++)
     {
         for (int j = 0; j < N; j++)
@@ -51,9 +42,8 @@ void fillArr(int **arr)
 }
 
 // Первая задача
-void firstTask(int **arr)
+void firstTask(int** arr, int N)
 {
-    const int N = lenghtArr(arr);
     int* Arr = new int[N];
     for (int i = 0; i < N; i++)
     {
@@ -97,9 +87,8 @@ void firstTask(int **arr)
 }
 
 // Вторая задача
-void secondTask(int ** arr)
+void secondTask(int** arr, int N)
 {
-    const int N = lenghtArr(arr);
     int T = 2 * N;
     int* Arr1 = new int[T];
     for (int i = 0; i < N; i++)
@@ -147,9 +136,8 @@ void secondTask(int ** arr)
 }
 
 // Удаляем массив
-void deleteArr(int **arr)
+void deleteArr(int** arr, int N)
 {
-    const int N = lenghtArr(arr);
     for (int i = 0; i < N; i++)
     {
         delete[] arr[i];
@@ -177,17 +165,16 @@ int main()
 
 
     // Заполнение массива
-    fillArr(Array);
+    fillArr(Array, N);
     // Вывод массива
-    outArr(Array);
+    outArr(Array, N);
     // Первая задача
-    firstTask(Array);
+    firstTask(Array, N);
     // Вторая задача
-    secondTask(Array);
+    secondTask(Array, N);
     // Удаляем массив
-    deleteArr(Array);
+    deleteArr(Array, N);
 
     cout << endl;
-    system("pause");
     return 0;
 }
